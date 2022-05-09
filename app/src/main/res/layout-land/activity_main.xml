@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_toast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#366AA1"
+            android:text="@string/greeting"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#366AA1"
+            android:textSize="20sp"
+            android:text="@string/count"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/text_count"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_margin="8dp"
+        android:background="#E1DBEF6C"
+        android:gravity="center"
+        android:text="@string/counter"
+        android:textAlignment="center"
+        android:textColor="#83470B"
+        android:textSize="260sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
