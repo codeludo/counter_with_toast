@@ -9,14 +9,19 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    // Counter
+    var mCount = 0
+    // text counter
+    lateinit var mShowCount : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var mCount = 0
+        mShowCount = findViewById(com.codeludo.contador.R.id.text_count)
+
         val btnGreeting : Button = findViewById(R.id.button_toast)
         val btnCount : Button = findViewById(R.id.button_counter)
-        val mShowCount : TextView = findViewById(R.id.text_count)
 
         btnCount.setOnClickListener{
                 mCount++
@@ -28,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             toast.show()
         }
     }
+
+    // Android App Life Cycle
 
     override fun onStart() {
         super.onStart()
@@ -63,5 +70,31 @@ class MainActivity : AppCompatActivity() {
 
         val onDestroyToast : Toast = Toast.makeText(this, "On Destroy", Toast.LENGTH_SHORT)
         onDestroyToast.show()
+    }
+
+    // save simple state
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(outState)
+        // Save the user's current counter state
+        outState.run {
+            putInt(NUM, mCount)
+        }
+    }
+
+    companion object {
+        val NUM = "COUNTER_NUMBER"
+    }
+
+    // restore state
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        savedInstanceState.run {
+            mCount = getInt(NUM)
+            mShowCount.text = mCount.toString()
+        }
     }
 }
